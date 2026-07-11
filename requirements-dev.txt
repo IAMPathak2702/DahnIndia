@@ -1,0 +1,9 @@
+# Dev-only tooling: testing, linting, type-checking. Not needed to run the
+# service (see requirements.txt / Dockerfile for the runtime-only deps).
+-r requirements.txt
+
+pytest==9.1.1
+httpx==0.28.1        # required by fastapi.testclient.TestClient
+mypy==2.2.0
+ruff==0.15.21
+pandas-stubs==3.0.3.260530

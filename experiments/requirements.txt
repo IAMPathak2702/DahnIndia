@@ -1,0 +1,7 @@
+# Only needed to run experiments/compare_models.py -- kept out of
+# requirements-dev.txt because xgboost is a large native-code dependency
+# that routine dev work (running the API, tests, lint, type-checks) never
+# needs.
+-r ../requirements-dev.txt
+
+xgboost==3.3.0

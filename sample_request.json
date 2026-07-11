@@ -1,0 +1,84 @@
+{
+    "readings": [
+        {
+            "air_temperature": 298.1,
+            "process_temperature": 308.6,
+            "rotational_speed": 1551,
+            "torque": 42.8,
+            "tool_wear": 0,
+            "type": "M"
+        },
+        {
+            "air_temperature": 298.2,
+            "process_temperature": 308.7,
+            "rotational_speed": 1408,
+            "torque": 46.3,
+            "tool_wear": 3,
+            "type": "L"
+        },
+        {
+            "air_temperature": 298.1,
+            "process_temperature": 308.5,
+            "rotational_speed": 1498,
+            "torque": 49.4,
+            "tool_wear": 5,
+            "type": "L"
+        },
+        {
+            "air_temperature": 298.2,
+            "process_temperature": 308.6,
+            "rotational_speed": 1433,
+            "torque": 39.5,
+            "tool_wear": 7,
+            "type": "L"
+        },
+        {
+            "air_temperature": 298.2,
+            "process_temperature": 308.7,
+            "rotational_speed": 1408,
+            "torque": 40.0,
+            "tool_wear": 9,
+            "type": "L"
+        },
+        {
+            "air_temperature": 298.1,
+            "process_temperature": 308.6,
+            "rotational_speed": 1425,
+            "torque": 41.9,
+            "tool_wear": 11,
+            "type": "M"
+        },
+        {
+            "air_temperature": 298.1,
+            "process_temperature": 308.6,
+            "rotational_speed": 1558,
+            "torque": 42.4,
+            "tool_wear": 14,
+            "type": "L"
+        },
+        {
+            "air_temperature": 298.1,
+            "process_temperature": 308.6,
+            "rotational_speed": 1527,
+            "torque": 40.2,
+            "tool_wear": 16,
+            "type": "L"
+        },
+        {
+            "air_temperature": 298.3,
+            "process_temperature": 308.7,
+            "rotational_speed": 1667,
+            "torque": 28.6,
+            "tool_wear": 18,
+            "type": "M"
+        },
+        {
+            "air_temperature": 298.5,
+            "process_temperature": 309.0,
+            "rotational_speed": 1741,
+            "torque": 28.0,
+            "tool_wear": 21,
+            "type": "M"
+        }
+    ]
+}
