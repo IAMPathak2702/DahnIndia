@@ -181,11 +181,10 @@ refitting both across 5 independent random splits confirms it:
 
 It's also *faster* to fit at this scale (~4.5k rows) — its `O(n²)`-ish
 training cost only starts to hurt at scales this project never reaches.
-Going in, I'd assumed (still visible in git history) that OCSVM would be
-"more sensitive to feature scaling and kernel choice, slower... not
-obviously better." Turns out that was wrong on both counts — a good
-reminder to actually check assumptions like that instead of shipping them
-as fact.
+Going in, I'd assumed OCSVM would be "more sensitive to feature scaling
+and kernel choice, slower... not obviously better." Turns out that was
+wrong on both counts — a good reminder to actually check assumptions like
+that instead of shipping them as fact.
 
 **So why does IsolationForest still ship instead of OCSVM?** Honestly,
 the margin is real but modest — about 1.4pp PR-AUC, 3pp F1 — and I weighed
