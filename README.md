@@ -181,24 +181,21 @@ refitting both across 5 independent random splits confirms it:
 
 It's also *faster* to fit at this scale (~4.5k rows) - its `O(n²)`-ish
 training cost only starts to hurt at scales this project never reaches.
-Going in, I'd assumed OCSVM would be "more sensitive to feature scaling
-and kernel choice, slower... not obviously better." Turns out that was
-wrong on both counts - a good reminder to actually check assumptions like
-that instead of shipping them as fact.
+Before running the numbers, OCSVM looked like it would be more sensitive
+to feature scaling and kernel choice, and slower - neither held up here.
 
-**So why does IsolationForest still ship instead of OCSVM?** Honestly,
-the margin is real but modest - about 1.4pp PR-AUC, 3pp F1 - and I weighed
-it against two things that aren't in the metrics: (1) OCSVM needs a fitted
+**IsolationForest still ships instead of OCSVM, for two reasons that
+aren't in the metrics table.** First, OCSVM needs a fitted
 `StandardScaler` bundled into the artifact and applied identically at
-serving time, which is a second stateful object that has to stay
-version-locked with the model - exactly the kind of train/serve skew risk
-`app/features.py` was written to avoid elsewhere in this repo; (2) this
-comparison is a single stratified split validated across 5 seeds, not
-full k-fold cross-validation, and I didn't sweep OCSVM's `nu`/`gamma` the
-way I swept IsolationForest's params - so I'm not fully confident the gap
-is optimized on either side. **If I had another hour, switching the
-default to One-Class SVM would be the first thing I'd go validate
-properly** - the evidence is real, not hand-waved. See §8.
+serving time - a second stateful object that has to stay version-locked
+with the model, exactly the kind of train/serve skew risk
+`app/features.py` was written to avoid elsewhere in this repo. Second,
+this comparison is a single stratified split validated across 5 seeds,
+not full k-fold cross-validation, and OCSVM's `nu`/`gamma` never got the
+same sweep IsolationForest's params did - so the ~1.4pp PR-AUC / ~3pp F1
+gap isn't fully optimized on either side yet. **Switching the default to
+One-Class SVM is next on the list** - a proper k-fold sweep first, then
+the swap. See §8.
 
 ## 3. Preprocessing
 
@@ -494,10 +491,10 @@ in §2).
   latest approved version at startup instead of a `COPY` baked into the
   image, so retraining doesn't require rebuilding and redeploying the
   whole service.
-- Add basic auth / an API key (e.g. Azure API Management in front) -
-  there's none right now, which is fine for a "not a production system"
-  brief, but it'd be the first thing I'd add before this touched a real
-  device fleet.
+- No auth on the API right now, which is fine for a "not a production
+  system" brief but the first gap to close before this touched a real
+  device fleet - basic auth or an API key, e.g. via Azure API Management
+  in front of the service.
 
 ## 9. Repo layout
 
